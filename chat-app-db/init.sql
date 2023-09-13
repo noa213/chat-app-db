@@ -1,3 +1,4 @@
+CREATE DATABASE `chat-app-db`
 CREATE TABLE `chat-app-db`.`users` (
   `username` VARCHAR(45) NOT NULL,
   `password` INT NOT NULL,

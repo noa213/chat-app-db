@@ -4,27 +4,26 @@ from datetime import datetime
 import base64
 import os
 
-from flaskext.mysql import MySQL
+# from flaskext.mysql import MySQL
 
 app = Flask(__name__)
 app.secret_key = "ABC"
 room_names = []
 my_path = os.environ.get('path')
 
-mysql = MySQL()
-app.config['MYSQL_DATABASE_HOST'] = 'localhost'
-app.config['MYSQL_DATABASE_USER'] = 'root'
-app.config['MYSQL_DATABASE_PASSWORD'] = '1234'
-app.config['MYSQL_DATABASE_DB'] = 'chat-app-db'
-mysql.init_app(app)
-@app.route('/try')
-def trying():
-    cursor = mysql.connect().cursor()
-    cursor.execute("SELECT * FROM users")
-    # mysql.connection.commit()
-    data = str(cursor.fetchall())
-    cursor.close()
-    return data
+# mysql = MySQL()
+# app.config['MYSQL_DATABASE_HOST'] = 'localhost'
+# app.config['MYSQL_DATABASE_USER'] = 'root'
+# app.config['MYSQL_DATABASE_PASSWORD'] = '1234'
+# app.config['MYSQL_DATABASE_DB'] = 'chat-app-db'
+# mysql.init_app(app)
+# @app.route('/try')
+# def trying():
+#     cursor = mysql.connect().cursor()
+#     cursor.execute("SELECT * FROM users")
+#     data = str(cursor.fetchall())
+#     cursor.close()
+#     return data
 
 
 # Function to check if a username exists in the users.csv file
@@ -78,8 +77,7 @@ def homePage():
         if username_exists(username):
             return redirect("/login")
         else:
-            register_user(username, userpass)
-            
+            register_user(username, userpass)        
     return render_template('register.html')
 
 
